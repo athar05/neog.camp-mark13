@@ -19,7 +19,7 @@ var date = {
   year: 2020,
 };
 
-function convertNumToStr(date) {
+function convertDateToStr(date) {
   var dateStr = { day: "", month: "", year: "" };
   if (date.day < 10) {
     dateStr.day = "0" + date.day;
@@ -35,4 +35,31 @@ function convertNumToStr(date) {
 
   return dateStr;
 }
-  
+
+function getDatesInAllFormats() {
+  var dateStr = convertDateToStr(date);
+
+  var ddmmyyyy = dateStr.day + dateStr.month + dateStr.year;
+  var mmddyyyy = dateStr.month + dateStr.day + dateStr.year;
+  var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
+  var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
+  var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
+  var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
+
+  return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
+}
+
+function palindromeForAllDateFormats() {
+  var listOfDateFormats = getDatesInAllFormats(date);
+
+  var palindromeChecker = false;
+
+  for (var i = 0; i < listOfDateFormats.length; i++)
+    if (isPalindrome(listOfDateFormats[i])) {
+      palindromeChecker = true;
+      break;
+    }
+  return palindromeChecker;
+}
+
+console.log(palindromeForAllDateFormats(date));
