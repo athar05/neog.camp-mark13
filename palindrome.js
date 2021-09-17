@@ -55,11 +55,11 @@ function palindromeForAllDateFormats() {
   var palindromeChecker = false;
 
   for (var i = 0; i < listOfDateFormats.length; i++)
-    if (isPalindrome(listOfDateFormats[i] ) === true) {
+    if (isPalindrome(listOfDateFormats[i] )) {
       palindromeChecker = true;
       break;
     }
-    
+
   return palindromeChecker;
 }
 
